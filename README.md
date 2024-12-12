@@ -16,8 +16,7 @@ The goal of this project is to develop a deep learning-based model that can colo
    ```
    pip install -r requirements.txt
    ```
-3. **Download the pretrained model**: If you're not training the model yourself, download the pretrained model weights (net_G_epoch_20.pth), or you can use the provided weights.
-4. **Run the Streamlit app**:
+3. **Run the Streamlit app**:
    ```
    streamlit run app.py
    ```
