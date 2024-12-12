@@ -26,3 +26,19 @@ The generator is based on a U-Net architecture with a ResNet34 backbone. It pred
 - **Input**: Grayscale images (L channel of LAB)
 - **Output**: Colorized images (ab channels of LAB)
 - **Loss**: A combination of adversarial loss and L1 loss.
+
+## Implementation Details
+### Dataset Used
+I used 10k randomly sampled images from the COCO Minitrain dataset, which originally consists of 25k images. The dataset can be accessed from [Kaggle](https://www.kaggle.com/datasets/trungit/coco25k)
+
+### Training
+The model uses a pre-trained Resnet-34 as the backbone for the U-Net architecture of the generator. The generator was trained independently for 20 epochs and then the entire model (Generator+Discriminator) was trained for 20 epochs. This is different from the strategy mentioned in the original [Pix2Pix](https://arxiv.org/abs/1611.07004) paper where the authors directly go for adverserial training. Pretraining the generator improves the results significantly. The parameters for adverserial training are kept the same as in the paper.
+
+### Results
+![Img1](/assets/Screenshot%202024-12-12%20122440.png)
+![Img2](/assets/Screenshot%202024-12-12%20122503.png)
+![Img3](/assets/Screenshot%202024-12-12%20122522.png)
+![Img4](/assets/Screenshot%202024-12-12%20122601.png)
+![Img5](/assets/Screenshot%202024-12-12%20122726.png)
+![Img6](/assets/Screenshot%202024-12-12%20122749.png)
+
