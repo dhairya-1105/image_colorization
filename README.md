@@ -9,7 +9,7 @@ The goal of this project is to develop a deep learning-based model that can colo
 ## Setup
 1. **Clone the repository**:
    ```
-   git clone https://github.com/yourusername/image_colorization.git
+   git clone https://github.com/dhairya-1105/image_colorization.git
    cd image_colorization
    ```
 2. **Install dependencies**:
