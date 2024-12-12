@@ -32,7 +32,9 @@ The generator is based on a U-Net architecture with a ResNet34 backbone. It pred
 I used 10k randomly sampled images from the COCO Minitrain dataset, which originally consists of 25k images. The dataset can be accessed from [Kaggle](https://www.kaggle.com/datasets/trungit/coco25k)
 
 ### Training
-The model uses a pre-trained Resnet-34 as the backbone for the U-Net architecture of the generator. The generator was trained independently for 20 epochs and then the entire model (Generator+Discriminator) was trained for 20 epochs. This is different from the strategy mentioned in the original [Pix2Pix](https://arxiv.org/abs/1611.07004) paper where the authors directly go for adverserial training. Pretraining the generator improves the results significantly. The parameters for adverserial training are kept the same as in the paper.
+The model uses a pre-trained Resnet-34 as the backbone for the U-Net architecture of the generator. The generator was trained independently for 20 epochs and then the entire model (Generator+Discriminator) was trained for 20 epochs. This is different from the strategy mentioned in the original [Pix2Pix](https://arxiv.org/abs/1611.07004) paper where the authors directly go for adverserial training. Pretraining the generator improves the results significantly. The parameters for adverserial training are kept the same as in the paper. The architectures for generator and discriminator can be accessed from the assets folder. A high level overview is given below:
+
+![Pix2Pix Architecture](/assets/Google%20ChromeScreenSnapz096.jpg)
 
 ### Results
 ![Img1](/assets/Screenshot%202024-12-12%20122440.png)
