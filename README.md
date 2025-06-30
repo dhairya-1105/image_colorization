@@ -44,3 +44,4 @@ The model uses a pre-trained Resnet-34 as the backbone for the U-Net architectur
 ![Img5](/assets/Screenshot%202024-12-12%20122726.png)
 ![Img6](/assets/Screenshot%202024-12-12%20122749.png)
 
+The model achieves a **PSNR of 26.59** and a **SSIM of 0.924** on a subset of 5k images from the COCO Minitrain.
