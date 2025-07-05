@@ -38,7 +38,7 @@ st.write("Upload a grayscale image to see the colorized output.")
 uploaded_file = st.file_uploader("Upload Grayscale Image", type=["jpg", "png", "jpeg"])
 if uploaded_file:
     input_image = Image.open(uploaded_file).convert("RGB")
-    st.image(input_image, caption="Uploaded Image", use_column_width=True)
+    st.image(input_image, caption="Uploaded Image", use_container_width=True)
 
     # Preprocess the image
     input_L = preprocess(input_image).unsqueeze(0).to(device)
@@ -55,5 +55,9 @@ if uploaded_file:
     lab_image = np.concatenate([input_L, output_ab], axis=0).transpose(1, 2, 0)
     rgb_image = lab2rgb(lab_image)
 
+    # Resize the image
+    original_size = input_image.size
+    rgb_image_resized = Image.fromarray((rgb_image * 255).astype(np.uint8)).resize(original_size, Image.BICUBIC)
+
     # Display the colorized image
-    st.image(rgb_image, caption="Colorized Image", use_column_width=True)
+    st.image(rgb_image_resized, caption="Colorized Image", use_container_width=True)
