@@ -3,7 +3,7 @@
 This repository contains the code and model for colorizing black-and-white images using a Generative Adversarial Network (GAN). The model leverages a U-Net architecture with a ResNet34 backbone for the generator and a standard discriminator to perform colorization.
 
 ## Project Overview
-The goal of this project is to develop a deep learning-based model that can colorize grayscale images by predicting the "ab" channels in the LAB color space. The model was trained using the Deep Convolutional Generative Adversarial Network (DCGAN) architecture with modifications to better suit the image colorization task.
+The goal of this project is to develop a deep learning-based model that can colorize grayscale images by predicting the "ab" channels in the LAB color space. The model was trained using the Pix2Pix Conditional Generative Adversarial Network (cGAN) architecture.
 
 
 ## Setup
@@ -27,6 +27,8 @@ The generator is based on a U-Net architecture with a ResNet34 backbone. It pred
 - **Output**: Colorized images (ab channels of LAB)
 - **Loss**: A combination of adversarial loss and L1 loss.
 
+The discriminator is a **PatchGAN** which uses convolutions to convert the Generator's 256 * 256 * 3 output into a 30 * 30 * 1 feature map, such that each pixel value of the feature map corresponds to a 70 * 70 patch of the generated image.
+
 ## Implementation Details
 ### Dataset Used
 I used 10k randomly sampled images from the COCO Minitrain dataset, which originally consists of 25k images. The dataset can be accessed from [Kaggle](https://www.kaggle.com/datasets/trungit/coco25k)
@@ -44,4 +46,10 @@ The model uses a pre-trained Resnet-34 as the backbone for the U-Net architectur
 ![Img5](/assets/Screenshot%202024-12-12%20122726.png)
 ![Img6](/assets/Screenshot%202024-12-12%20122749.png)
 
-The model achieves a **PSNR of 26.59** and a **SSIM of 0.924** on a subset of 5k images from the COCO Minitrain.
+### Performance Comparison
+
+| Model Variant             | PSNR (dB) | SSIM   |
+|--------------------------|-----------|--------|
+| Without Pretrained Generator | 22.18     | 0.878 |
+| With Pretrained Generator    | **26.59** | **0.924** |
+
